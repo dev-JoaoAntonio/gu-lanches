@@ -5,31 +5,33 @@
       <router-link to="/" class="hdr__brand" @click="mobileOpen = false">
         <img src="/logo.png" alt="Lanches do Gú" class="hdr__logo" />
         <span class="hdr__brand-text">
-          <span class="hdr__brand-up t-up">Hambúrgueres feitos em casa</span>
-          <span class="hdr__brand-name t-brush">Lanches do Gú</span>
+          <span class="hdr__brand-up">Hambúrgueres feitos em casa</span>
+          <span class="hdr__brand-name">Lanches do Gú</span>
         </span>
       </router-link>
+
       <nav class="hdr__nav">
         <a :href="homeHash('cardapio')" class="hdr__link" @click="handleHash($event, 'cardapio')">Cardápio</a>
-        <router-link to="/quem-somos" class="hdr__link" active-class="is-active">Quem é o Gú</router-link>
-        <a :href="homeHash('depoimentos')" class="hdr__link" @click="handleHash($event, 'depoimentos')">Recados</a>
+        <router-link to="/quem-somos" class="hdr__link" active-class="is-active">A casa</router-link>
+        <a :href="homeHash('depoimentos')" class="hdr__link" @click="handleHash($event, 'depoimentos')">Avaliações</a>
         <a :href="homeHash('onde')" class="hdr__link" @click="handleHash($event, 'onde')">Como pedir</a>
       </nav>
-      <a href="https://wa.me/5562999990000" class="btn btn-primary hdr__cta" target="_blank" rel="noopener">
-        <q-icon name="chat" size="18px" />
-        Pedir no zap
+
+      <a :href="IFOOD_URL" class="btn btn-primary hdr__cta" target="_blank" rel="noopener">
+        Peça no iFood
       </a>
+
       <button class="hdr__burger" :class="{ open: mobileOpen }" @click="mobileOpen = !mobileOpen" aria-label="Menu">
         <span /><span /><span />
       </button>
     </div>
     <div class="hdr__mobile" :class="{ open: mobileOpen }">
       <a :href="homeHash('cardapio')" @click="handleHash($event, 'cardapio'); mobileOpen = false">Cardápio</a>
-      <router-link to="/quem-somos" @click="mobileOpen = false">Quem é o Gú</router-link>
-      <a :href="homeHash('depoimentos')" @click="handleHash($event, 'depoimentos'); mobileOpen = false">Recados</a>
+      <router-link to="/quem-somos" @click="mobileOpen = false">A casa</router-link>
+      <a :href="homeHash('depoimentos')" @click="handleHash($event, 'depoimentos'); mobileOpen = false">Avaliações</a>
       <a :href="homeHash('onde')" @click="handleHash($event, 'onde'); mobileOpen = false">Como pedir</a>
-      <a href="https://wa.me/5562999990000" class="btn btn-primary" target="_blank" rel="noopener">
-        Pedir no WhatsApp
+      <a :href="IFOOD_URL" class="btn btn-primary" target="_blank" rel="noopener">
+        Peça no iFood
       </a>
     </div>
   </header>
@@ -38,6 +40,7 @@
 <script setup>
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { IFOOD_URL } from '@/config'
 
 const route = useRoute()
 const router = useRouter()
@@ -45,11 +48,7 @@ const scrolled = ref(false)
 const mobileOpen = ref(false)
 
 function onScroll() { scrolled.value = window.scrollY > 24 }
-
-function homeHash(id) {
-  return route.path === '/' ? `#${id}` : `/#${id}`
-}
-
+function homeHash(id) { return route.path === '/' ? `#${id}` : `/#${id}` }
 function handleHash(event, id) {
   if (route.path !== '/') {
     event.preventDefault()
@@ -65,53 +64,65 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 .hdr {
   position: fixed; inset: 0 0 auto 0;
   z-index: 100;
-  padding: 18px 0;
-  transition: padding .3s, background .3s, backdrop-filter .3s;
+  padding: 16px 0;
+  background: rgba(247, 242, 232, 0);
+  transition: padding .3s, background .3s, backdrop-filter .3s, border-color .3s;
+  border-bottom: 1px solid transparent;
   &.is-scrolled {
     padding: 10px 0;
-    background: rgba(5,5,5,.72);
-    backdrop-filter: blur(18px) saturate(140%);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
-    border-bottom: 1px solid var(--c-border);
+    background: rgba(247, 242, 232, 0.86);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom-color: var(--c-border);
   }
 }
 .hdr__progress {
-  position: absolute; left: 0; bottom: 0;
+  position: absolute; left: 0; bottom: -1px;
   height: 2px; width: 100%;
-  background: var(--g-fire);
+  background: var(--c-fire);
   transform-origin: left;
   transform: scaleX(0);
 }
 .hdr__inner { display: flex; align-items: center; gap: 24px; }
+
 .hdr__brand {
-  display: flex; align-items: center; gap: 14px;
-  cursor: pointer;
-  flex-shrink: 0;
-  text-decoration: none;
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer; flex-shrink: 0;
 }
 .hdr__logo {
-  width: 46px; height: 46px;
+  width: 42px; height: 42px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 0 2px var(--c-gold), 0 10px 30px -8px rgba(255, 184, 0, .6);
+  border: 1px solid var(--c-border);
   transition: transform .4s;
 }
-.hdr__brand:hover .hdr__logo { transform: rotate(-6deg) scale(1.05); }
+.hdr__brand:hover .hdr__logo { transform: scale(1.04); }
 .hdr__brand-text { display: flex; flex-direction: column; line-height: 1; }
-.hdr__brand-up { font-size: 9px; color: var(--c-gold); }
+.hdr__brand-up {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--c-text-mute);
+  font-weight: 500;
+}
 .hdr__brand-name {
+  font-family: var(--f-display);
+  font-variation-settings: "opsz" 144;
+  font-style: italic;
+  font-weight: 600;
   font-size: 22px;
   margin-top: 4px;
-  color: var(--c-cream);
-  letter-spacing: .005em;
+  color: var(--c-text);
+  letter-spacing: -.01em;
 }
-.hdr__nav { display: flex; gap: 28px; margin-left: auto; }
+
+.hdr__nav { display: flex; gap: 32px; margin-left: auto; }
 .hdr__link {
   font-family: var(--f-mono);
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: .04em;
-  text-transform: uppercase;
+  letter-spacing: .03em;
   color: var(--c-text-dim);
   position: relative;
   padding: 6px 0;
@@ -119,8 +130,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   &::after {
     content: "";
     position: absolute; left: 0; right: 0; bottom: 0;
-    height: 2px;
-    background: var(--g-fire);
+    height: 1px;
+    background: var(--c-fire);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform .35s cubic-bezier(.2,.7,.2,1);
@@ -130,13 +141,14 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
     &::after { transform: scaleX(1); transform-origin: left; }
   }
 }
-.hdr__cta { padding: 12px 20px; font-size: 12px; }
+.hdr__cta { padding: 11px 18px; font-size: 12px; }
+
 .hdr__burger {
   display: none;
   background: none;
-  border: 1px solid var(--c-border);
-  border-radius: 10px;
-  width: 44px; height: 44px;
+  border: 1px solid var(--c-border-strong);
+  border-radius: 6px;
+  width: 42px; height: 42px;
   padding: 0;
   cursor: pointer;
   flex-direction: column;
@@ -144,24 +156,24 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   align-items: center;
   justify-content: center;
   span {
-    width: 20px; height: 2px;
-    background: var(--c-gold);
+    width: 18px; height: 1.5px;
+    background: var(--c-text);
     transition: transform .3s, opacity .2s;
     transform-origin: center;
   }
-  &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  &.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   &.open span:nth-child(2) { opacity: 0; }
-  &.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  &.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 }
 .hdr__mobile {
   display: none;
   position: absolute; top: 100%; left: 0; right: 0;
-  background: rgba(5,5,5,.96);
+  background: rgba(247, 242, 232, 0.98);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--c-border);
   padding: 18px 24px 28px;
   flex-direction: column;
-  gap: 14px;
+  gap: 6px;
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
@@ -169,13 +181,12 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   &.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
   a {
     font-family: var(--f-mono);
-    font-size: 18px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,.05);
+    font-size: 15px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--c-border);
     color: var(--c-text);
-    text-transform: uppercase;
     letter-spacing: .04em;
-    &.btn { justify-content: center; border-bottom: 0; }
+    &.btn { justify-content: center; border-bottom: 0; margin-top: 12px; }
   }
 }
 @media (max-width: 980px) {
@@ -186,6 +197,6 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 @media (max-width: 480px) {
   .hdr__brand-name { font-size: 18px; }
   .hdr__brand-up { font-size: 8px; }
-  .hdr__logo { width: 40px; height: 40px; }
+  .hdr__logo { width: 38px; height: 38px; }
 }
 </style>

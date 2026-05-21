@@ -10,7 +10,7 @@ import './styles/app.scss'
 import revealDirective from './composables/revealDirective'
 
 const app = createApp(App)
-app.use(Quasar, { iconSet: quasarIconSet, config: { dark: true } })
+app.use(Quasar, { iconSet: quasarIconSet, config: { dark: false } })
 app.use(router)
 app.directive('reveal', revealDirective)
 app.mount('#app')

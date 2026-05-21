@@ -1,132 +1,146 @@
 <template>
   <footer class="ftr">
     <div class="container">
-      <div class="ftr__lockup">
+      <div class="ftr__top">
         <div class="ftr__brand" v-reveal="'up'">
-          <img src="/logo.png" alt="" class="ftr__logo float-y" />
-          <div class="ftr__brand-text">
-            <span class="t-up">Hambúrgueres feitos em casa</span>
-            <span class="t-display t-grad-gold ftr__brand-name">Lanches do Gú</span>
+          <img src="/logo.png" alt="" class="ftr__logo" />
+          <div>
+            <span class="t-up ftr__brand-up">Hambúrgueres feitos em casa</span>
+            <span class="ftr__brand-name">Lanches do Gú</span>
           </div>
         </div>
+
+        <a :href="IFOOD_URL" class="btn btn-primary ftr__cta" target="_blank" rel="noopener" v-reveal="'up'" data-reveal-delay="100">
+          Peça no iFood
+        </a>
       </div>
 
-      <div class="ftr__big sd-parallax-slow t-display" aria-hidden="true">
-        cozinha de casa.
+      <div class="ftr__big sd-parallax-slow" aria-hidden="true">
+        <span class="t-display-italic">Cozinha de casa.</span>
       </div>
 
       <div class="ftr__grid">
-        <div class="ftr__col" v-reveal="'up-left'">
-          <strong>O lugar</strong>
+        <nav class="ftr__col" v-reveal="'up-left'">
+          <strong>Site</strong>
           <router-link to="/">Início</router-link>
           <a href="/#cardapio">Cardápio</a>
-          <a href="/#depoimentos">Recados</a>
+          <a href="/#depoimentos">Avaliações</a>
           <a href="/#onde">Como pedir</a>
-        </div>
-        <div class="ftr__col" v-reveal="'up'" data-reveal-delay="100">
-          <strong>Sobre</strong>
-          <router-link to="/quem-somos">Quem é o Gú</router-link>
+        </nav>
+        <nav class="ftr__col" v-reveal="'up'" data-reveal-delay="80">
+          <strong>A casa</strong>
+          <router-link to="/quem-somos">A história</router-link>
           <router-link to="/quem-somos#familia">A família</router-link>
           <router-link to="/quem-somos#dia">Um dia de cozinha</router-link>
-        </div>
-        <div class="ftr__col" v-reveal="'up'" data-reveal-delay="200">
-          <strong>Falar com a gente</strong>
-          <a href="https://wa.me/5562999990000" target="_blank" rel="noopener">
-            <q-icon name="chat" size="14px" /> WhatsApp
-          </a>
-          <a href="https://instagram.com/lanchesdogu" target="_blank" rel="noopener">
-            <q-icon name="o_camera_alt" size="14px" /> @lanchesdogu
-          </a>
-          <a href="mailto:ola@lanchesdogu.com">
-            <q-icon name="mail" size="14px" /> ola@lanchesdogu.com
-          </a>
-        </div>
-        <div class="ftr__col ftr__col--note" v-reveal="'up-right'" data-reveal-delay="300">
-          <strong>Recadinho</strong>
-          <p class="t-hand">
-            obrigado por vir comer aqui em casa! a gente capricha de verdade
-            em cada lanche. — gú e família ♥
-          </p>
+        </nav>
+        <nav class="ftr__col" v-reveal="'up'" data-reveal-delay="160">
+          <strong>Contato</strong>
+          <a :href="IFOOD_URL" target="_blank" rel="noopener">iFood</a>
+          <a :href="WHATSAPP_URL" target="_blank" rel="noopener">WhatsApp</a>
+          <a :href="INSTAGRAM_URL" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:ola@lanchesdogu.com">ola@lanchesdogu.com</a>
+        </nav>
+        <div class="ftr__col ftr__col--addr" v-reveal="'up-right'" data-reveal-delay="240">
+          <strong>Atendimento</strong>
+          <p>Vila Brasília<br/>Aparecida de Goiânia · GO</p>
+          <p>Sex. e Sáb. · 19h–23h<br/>Dom. · 12h–15h</p>
         </div>
       </div>
 
       <div class="ftr__bottom">
-        <small>© 2026 Lanches do Gú · Vila Brasília, Aparecida de Goiânia.</small>
-        <small class="t-mono">site construído com a mãe lendo por cima do ombro</small>
+        <small>© 2026 Lanches do Gú · Todos os direitos reservados.</small>
+        <small class="t-mono">CNPJ MEI em processo de abertura</small>
       </div>
     </div>
   </footer>
 </template>
 
-<script setup></script>
+<script setup>
+import { IFOOD_URL, WHATSAPP_URL, INSTAGRAM_URL } from '@/config'
+</script>
 
 <style scoped lang="scss">
 .ftr {
-  position: relative;
-  background: linear-gradient(180deg, var(--c-bg-2) 0%, #000 100%);
-  padding: 100px 0 30px;
-  overflow: hidden;
+  background: var(--c-deep);
+  color: var(--c-cream);
+  padding: 90px 0 30px;
   border-top: 1px solid var(--c-border);
-}
-.ftr__lockup { margin-bottom: 60px; }
-.ftr__brand { display: flex; align-items: center; gap: 22px; }
-.ftr__logo {
-  width: 86px; height: 86px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--c-gold), 0 20px 50px -10px rgba(255, 184, 0, .5);
-  object-fit: cover;
-}
-.ftr__brand-text { display: flex; flex-direction: column; }
-.ftr__brand-text .t-up { color: var(--c-text-mute); }
-.ftr__brand-name {
-  font-size: clamp(40px, 6vw, 64px);
-  margin-top: 4px;
-  line-height: 1;
+  position: relative;
+  overflow: hidden;
 }
 
-.ftr__big {
-  font-size: clamp(80px, 14vw, 220px);
-  line-height: .9;
-  margin: 30px 0 60px;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--c-border);
+.ftr__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+  border-bottom: 1px solid var(--c-border-on-dark);
+}
+.ftr__brand { display: flex; align-items: center; gap: 16px; }
+.ftr__logo {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--c-border-on-dark);
+}
+.ftr__brand div { display: flex; flex-direction: column; }
+.ftr__brand-up { color: rgba(251, 248, 240, 0.5); margin-bottom: 4px; }
+.ftr__brand-name {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 144;
+  font-weight: 600;
+  font-size: clamp(28px, 3.5vw, 40px);
+  line-height: 1;
+  color: var(--c-cream);
   letter-spacing: -.02em;
+}
+.ftr__cta { background: var(--c-fire); color: #fff; }
+
+.ftr__big {
+  margin: 60px 0;
+  font-size: clamp(80px, 14vw, 200px);
+  line-height: .9;
+  letter-spacing: -.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(251, 248, 240, 0.16);
   white-space: nowrap;
   overflow: hidden;
-  text-transform: lowercase;
 }
 
 .ftr__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.2fr 1.2fr;
+  grid-template-columns: 1fr 1fr 1fr 1.2fr;
   gap: 30px;
-  padding-bottom: 50px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--c-border-on-dark);
 }
 .ftr__col {
   display: flex; flex-direction: column; gap: 10px;
   strong {
     font-family: var(--f-mono);
     text-transform: uppercase;
-    letter-spacing: .15em;
-    font-size: 12px;
-    color: var(--c-gold);
-    margin-bottom: 6px;
+    letter-spacing: .2em;
+    font-size: 11px;
+    color: var(--c-fire);
+    margin-bottom: 8px;
+    font-weight: 500;
   }
   a {
-    color: var(--c-text-dim);
+    color: rgba(251, 248, 240, 0.65);
     font-size: 14px;
-    transition: color .2s, transform .2s;
-    display: inline-flex; align-items: center; gap: 8px;
-    &:hover { color: var(--c-text); transform: translateX(4px); }
+    transition: color .2s, padding .2s;
+    width: fit-content;
+    &:hover { color: var(--c-cream); padding-left: 4px; }
   }
 }
-.ftr__col--note p {
-  font-size: 18px;
-  color: var(--c-text);
-  line-height: 1.4;
-  margin: 0;
-  max-width: 280px;
+.ftr__col--addr p {
+  font-size: 13px;
+  color: rgba(251, 248, 240, 0.65);
+  line-height: 1.6;
+  margin: 0 0 10px;
 }
 
 .ftr__bottom {
@@ -136,19 +150,19 @@
   flex-wrap: wrap;
   gap: 10px;
   small {
-    color: var(--c-text-mute);
-    font-size: 12px;
+    color: rgba(251, 248, 240, 0.5);
+    font-size: 11px;
     letter-spacing: .04em;
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 800px) {
   .ftr__grid { grid-template-columns: repeat(2, 1fr); }
   .ftr { padding-top: 60px; }
-  .ftr__lockup { margin-bottom: 30px; }
-  .ftr__big { margin: 14px 0 30px; }
+  .ftr__big { margin: 40px 0; }
 }
 @media (max-width: 480px) {
-  .ftr__logo { width: 64px; height: 64px; }
+  .ftr__logo { width: 52px; height: 52px; }
+  .ftr__top { flex-direction: column; align-items: flex-start; }
 }
 </style>
