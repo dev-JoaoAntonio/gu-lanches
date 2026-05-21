@@ -2,43 +2,61 @@
   <header class="hdr" :class="{ 'is-scrolled': scrolled }">
     <div class="hdr__progress sd-progress" aria-hidden="true" />
     <div class="container hdr__inner">
-      <a href="#top" class="hdr__brand">
+      <router-link to="/" class="hdr__brand" @click="mobileOpen = false">
         <img src="/logo.png" alt="Lanches do Gú" class="hdr__logo" />
         <span class="hdr__brand-text">
-          <span class="hdr__brand-up t-up">Hambúrgueres</span>
+          <span class="hdr__brand-up t-up">Hambúrgueres feitos em casa</span>
           <span class="hdr__brand-name t-brush">Lanches do Gú</span>
         </span>
-      </a>
+      </router-link>
       <nav class="hdr__nav">
-        <a href="#cardapio" class="hdr__link">Cardápio</a>
-        <a href="#historia" class="hdr__link">A história</a>
-        <a href="#depoimentos" class="hdr__link">Quem provou</a>
-        <a href="#onde" class="hdr__link">Onde estamos</a>
+        <a :href="homeHash('cardapio')" class="hdr__link" @click="handleHash($event, 'cardapio')">Cardápio</a>
+        <router-link to="/quem-somos" class="hdr__link" active-class="is-active">Quem é o Gú</router-link>
+        <a :href="homeHash('depoimentos')" class="hdr__link" @click="handleHash($event, 'depoimentos')">Recados</a>
+        <a :href="homeHash('onde')" class="hdr__link" @click="handleHash($event, 'onde')">Como pedir</a>
       </nav>
-      <a href="#pedir" class="btn btn-primary hdr__cta">
-        <q-icon name="bolt" size="18px" />
-        Pedir agora
+      <a href="https://wa.me/5562999990000" class="btn btn-primary hdr__cta" target="_blank" rel="noopener">
+        <q-icon name="chat" size="18px" />
+        Pedir no zap
       </a>
       <button class="hdr__burger" :class="{ open: mobileOpen }" @click="mobileOpen = !mobileOpen" aria-label="Menu">
         <span /><span /><span />
       </button>
     </div>
     <div class="hdr__mobile" :class="{ open: mobileOpen }">
-      <a href="#cardapio" @click="mobileOpen = false">Cardápio</a>
-      <a href="#historia" @click="mobileOpen = false">A história</a>
-      <a href="#depoimentos" @click="mobileOpen = false">Quem provou</a>
-      <a href="#onde" @click="mobileOpen = false">Onde estamos</a>
-      <a href="#pedir" @click="mobileOpen = false" class="btn btn-primary">Pedir agora</a>
+      <a :href="homeHash('cardapio')" @click="handleHash($event, 'cardapio'); mobileOpen = false">Cardápio</a>
+      <router-link to="/quem-somos" @click="mobileOpen = false">Quem é o Gú</router-link>
+      <a :href="homeHash('depoimentos')" @click="handleHash($event, 'depoimentos'); mobileOpen = false">Recados</a>
+      <a :href="homeHash('onde')" @click="handleHash($event, 'onde'); mobileOpen = false">Como pedir</a>
+      <a href="https://wa.me/5562999990000" class="btn btn-primary" target="_blank" rel="noopener">
+        Pedir no WhatsApp
+      </a>
     </div>
   </header>
 </template>
 
 <script setup>
 import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
+const route = useRoute()
+const router = useRouter()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
+
 function onScroll() { scrolled.value = window.scrollY > 24 }
+
+function homeHash(id) {
+  return route.path === '/' ? `#${id}` : `/#${id}`
+}
+
+function handleHash(event, id) {
+  if (route.path !== '/') {
+    event.preventDefault()
+    router.push({ path: '/', hash: `#${id}` })
+  }
+}
+
 onMounted(() => { onScroll(); window.addEventListener('scroll', onScroll, { passive: true }) })
 onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 </script>
@@ -64,14 +82,12 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   transform-origin: left;
   transform: scaleX(0);
 }
-.hdr__inner {
-  display: flex; align-items: center; gap: 24px;
-}
+.hdr__inner { display: flex; align-items: center; gap: 24px; }
 .hdr__brand {
   display: flex; align-items: center; gap: 14px;
-  font-family: var(--f-display);
   cursor: pointer;
   flex-shrink: 0;
+  text-decoration: none;
 }
 .hdr__logo {
   width: 46px; height: 46px;
@@ -82,20 +98,14 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 }
 .hdr__brand:hover .hdr__logo { transform: rotate(-6deg) scale(1.05); }
 .hdr__brand-text { display: flex; flex-direction: column; line-height: 1; }
-.hdr__brand-up {
-  font-size: 9px;
-  color: var(--c-gold);
-}
+.hdr__brand-up { font-size: 9px; color: var(--c-gold); }
 .hdr__brand-name {
   font-size: 22px;
   margin-top: 4px;
   color: var(--c-cream);
   letter-spacing: .005em;
 }
-.hdr__nav {
-  display: flex; gap: 28px;
-  margin-left: auto;
-}
+.hdr__nav { display: flex; gap: 28px; margin-left: auto; }
 .hdr__link {
   font-family: var(--f-mono);
   font-size: 13px;
@@ -115,7 +125,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
     transform-origin: right;
     transition: transform .35s cubic-bezier(.2,.7,.2,1);
   }
-  &:hover {
+  &:hover, &.is-active {
     color: var(--c-text);
     &::after { transform: scaleX(1); transform-origin: left; }
   }

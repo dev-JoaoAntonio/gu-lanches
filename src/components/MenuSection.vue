@@ -10,13 +10,13 @@
         <div>
           <span class="section-label" v-reveal="'right'">Cardápio</span>
           <h2 class="section-title" v-reveal="'up'" data-reveal-delay="100">
-            Os <span class="t-brush t-grad-fire">lanches</span> que<br/>
-            todo mundo pede de novo
+            Tem só o que<br/>
+            <span class="t-serif"><em>vale a pena</em></span> ter
           </h2>
         </div>
         <p class="section-lead" v-reveal="'left'" data-reveal-delay="180">
-          Cada lanche é montado na hora, com pão fresco do dia, blends próprios
-          e molhos feitos aqui dentro. Escolhe o teu e vem.
+          Cardápio enxuto de propósito. O Gú não monta nada que ele mesmo não comeria. Os preços
+          são os de bairro, os ingredientes vêm do mercado da esquina.
         </p>
       </div>
 
@@ -28,17 +28,11 @@
           v-reveal="reveals[idx % reveals.length]"
           :data-reveal-delay="idx * 90"
         >
-          <div class="burger__top">
-            <span class="burger__tag">{{ burger.tag }}</span>
-            <span class="burger__spicy" v-if="burger.spicy">
-              <span v-for="n in burger.spicy" :key="n">🌶️</span>
-            </span>
-          </div>
-
+          <span class="burger__num t-mono">0{{ idx + 1 }}</span>
           <div class="burger__emoji" aria-hidden="true">{{ burger.emoji }}</div>
 
           <h3 class="burger__name t-display">{{ burger.name }}</h3>
-          <p class="burger__sub t-brush">{{ burger.subtitle }}</p>
+          <p class="burger__sub t-hand">{{ burger.subtitle }}</p>
           <p class="burger__desc">{{ burger.description }}</p>
 
           <div class="burger__foot">
@@ -46,17 +40,16 @@
               <small>R$</small>
               <strong class="t-mono">{{ burger.price.toFixed(2).replace('.', ',') }}</strong>
             </span>
-            <button class="burger__add" aria-label="Adicionar ao pedido">
-              <q-icon name="add" size="20px" />
-            </button>
+            <a href="#pedir" class="burger__add" aria-label="Pedir esse">
+              <q-icon name="arrow_outward" size="20px" />
+            </a>
           </div>
         </article>
       </div>
 
-      <!-- combos / sides -->
       <div class="sides">
         <h3 class="sides__title t-display" v-reveal="'up'">
-          <span class="t-brush t-grad-gold">Acompanha</span> bem
+          <span class="t-serif"><em>pra acompanhar</em></span>
         </h3>
         <div class="sides__grid">
           <div
@@ -66,15 +59,19 @@
             v-reveal="sidesReveals[idx]"
             :data-reveal-delay="idx * 100"
           >
-            <q-icon :name="side.icon" size="32px" class="side__icon" />
+            <q-icon :name="side.icon" size="28px" class="side__icon" />
             <div class="side__body">
-              <h4 class="t-mono">{{ side.name }}</h4>
+              <h4>{{ side.name }}</h4>
               <p>{{ side.desc }}</p>
             </div>
             <span class="side__price t-mono">R$ {{ side.price.toFixed(2).replace('.', ',') }}</span>
           </div>
         </div>
       </div>
+
+      <p class="menu__foot t-hand" v-reveal="'up'">
+        * tem opção sem cebola, sem maionese, sem o que você não comer. é só falar no pedido.
+      </p>
     </div>
   </section>
 </template>
@@ -94,7 +91,7 @@ const sidesReveals = ['left', 'up', 'down', 'right']
   width: 600px; height: 600px;
   border-radius: 50%;
   filter: blur(150px);
-  opacity: .25;
+  opacity: .22;
   &--1 { top: -100px; right: -200px; background: radial-gradient(circle, #FFB800, transparent 60%); }
   &--2 { bottom: -200px; left: -300px; background: radial-gradient(circle, #E63946, transparent 60%); }
 }
@@ -105,10 +102,9 @@ const sidesReveals = ['left', 'up', 'down', 'right']
   gap: 60px;
   align-items: end;
   margin-bottom: 70px;
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
 }
-.section-title .t-brush { font-size: 1.15em; vertical-align: -0.05em; }
+.section-title .t-serif { font-size: 1em; vertical-align: 0; color: var(--c-gold); font-style: italic; font-weight: 700; text-transform: none; letter-spacing: -.01em; }
 
 .menu__grid {
   display: grid;
@@ -121,7 +117,7 @@ const sidesReveals = ['left', 'up', 'down', 'right']
   background: linear-gradient(180deg, var(--c-bg-3) 0%, var(--c-bg-2) 100%);
   border: 1px solid rgba(255,255,255,.06);
   border-radius: var(--r-lg);
-  padding: 26px 24px 22px;
+  padding: 28px 26px 22px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -144,49 +140,40 @@ const sidesReveals = ['left', 'up', 'down', 'right']
     .burger__emoji { transform: scale(1.15) rotate(-6deg); }
   }
 }
-.burger__top {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 8px;
-}
-.burger__tag {
-  font-family: var(--f-mono);
-  font-size: 10px;
+.burger__num {
+  position: absolute;
+  top: 22px; right: 22px;
+  font-size: 11px;
+  color: var(--c-text-mute);
   letter-spacing: .15em;
-  text-transform: uppercase;
-  padding: 6px 10px;
-  border-radius: var(--r-pill);
-  background: rgba(255, 184, 0, .12);
-  color: var(--c-gold);
-  border: 1px solid var(--c-border);
 }
-.burger__spicy { font-size: 14px; }
 .burger__emoji {
-  font-size: 90px;
+  font-size: 76px;
   line-height: 1;
-  margin: 6px 0;
+  margin: 0 0 14px;
   filter: drop-shadow(0 18px 24px rgba(255, 107, 26, .5));
   transition: transform .4s cubic-bezier(.2,.7,.2,1);
 }
 .burger__name {
-  font-size: 30px;
+  font-size: 32px;
   color: var(--c-text);
-  margin: 4px 0 0;
+  margin: 0;
 }
 .burger__sub {
-  font-family: var(--f-brush);
-  font-size: 20px;
+  font-family: var(--f-hand);
+  font-size: 22px;
   color: var(--c-gold);
-  margin: 0;
+  margin: 2px 0 6px;
 }
 .burger__desc {
   font-size: 14px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--c-text-dim);
-  margin: 8px 0 16px;
+  margin: 4px 0 18px;
 }
 .burger__foot {
   display: flex; justify-content: space-between; align-items: center;
-  margin-top: auto; padding-top: 12px;
+  margin-top: auto; padding-top: 14px;
   border-top: 1px dashed rgba(255,255,255,.08);
 }
 .burger__price {
@@ -196,38 +183,41 @@ const sidesReveals = ['left', 'up', 'down', 'right']
   strong { font-size: 28px; font-weight: 700; }
 }
 .burger__add {
-  width: 44px; height: 44px;
+  width: 42px; height: 42px;
   border-radius: 50%;
-  background: var(--g-fire);
-  color: #1b0900;
-  border: 0;
-  cursor: pointer;
+  background: var(--c-bg-3);
+  border: 1px solid var(--c-border);
+  color: var(--c-gold);
   display: grid; place-items: center;
-  transition: transform .3s, box-shadow .3s;
-  &:hover { transform: rotate(90deg) scale(1.06); box-shadow: 0 12px 30px -8px rgba(255,107,26,.7); }
+  transition: transform .3s, background .3s, color .3s;
+  &:hover {
+    transform: rotate(-12deg) scale(1.08);
+    background: var(--c-gold);
+    color: #1b0900;
+  }
 }
 
-/* sides */
 .sides {
-  margin-top: 100px;
+  margin-top: 110px;
   position: relative; z-index: 1;
 }
 .sides__title {
-  font-size: clamp(36px, 5vw, 60px);
+  font-size: clamp(32px, 4vw, 52px);
   margin: 0 0 32px;
-  .t-brush { font-size: 1.1em; vertical-align: -.05em; }
+  text-transform: lowercase;
+  .t-serif { font-style: italic; color: var(--c-gold); font-weight: 600; text-transform: none; letter-spacing: -.01em; }
 }
 .sides__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  gap: 16px;
 }
 .side {
   background: var(--c-bg-2);
   border: 1px solid rgba(255,255,255,.06);
   border-radius: var(--r-md);
-  padding: 22px;
-  display: flex; align-items: center; gap: 18px;
+  padding: 20px;
+  display: flex; align-items: center; gap: 16px;
   transition: transform .3s, background .3s, border-color .3s;
   &:hover {
     transform: translateY(-3px);
@@ -238,10 +228,17 @@ const sidesReveals = ['left', 'up', 'down', 'right']
 .side__icon { color: var(--c-gold); }
 .side__body {
   flex: 1;
-  h4 { font-size: 14px; margin: 0 0 4px; text-transform: uppercase; letter-spacing: .08em; color: var(--c-text); font-weight: 600; }
+  h4 { font-size: 14px; margin: 0 0 3px; color: var(--c-text); font-weight: 600; font-family: var(--f-body); }
   p { font-size: 12px; color: var(--c-text-mute); margin: 0; }
 }
 .side__price { color: var(--c-gold); font-size: 14px; font-weight: 600; }
+
+.menu__foot {
+  margin-top: 36px;
+  text-align: center;
+  font-size: 22px;
+  color: var(--c-text-mute);
+}
 
 @media (max-width: 980px) {
   .menu__head { grid-template-columns: 1fr; gap: 24px; }
@@ -251,6 +248,6 @@ const sidesReveals = ['left', 'up', 'down', 'right']
 @media (max-width: 560px) {
   .menu__grid { grid-template-columns: 1fr; }
   .sides__grid { grid-template-columns: 1fr; }
-  .burger__emoji { font-size: 72px; }
+  .burger__emoji { font-size: 62px; }
 }
 </style>

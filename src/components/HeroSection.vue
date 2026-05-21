@@ -1,6 +1,5 @@
 <template>
   <section id="top" class="hero section grain">
-    <!-- background composition -->
     <div class="hero__bg" aria-hidden="true">
       <div class="hero__glow hero__glow--fire" />
       <div class="hero__glow hero__glow--gold" />
@@ -22,51 +21,54 @@
     </div>
 
     <div class="container hero__inner">
-      <!-- left column -->
       <div class="hero__copy">
         <span class="section-label" v-reveal="'down'">
-          Desde 2019 · Artesanal · No carvão
+          Goiânia · Cozinha de casa
         </span>
 
         <h1 class="hero__title">
-          <span class="hero__line-1 t-display" v-reveal="'left'">Sabor que</span>
-          <span class="hero__line-2 t-brush t-grad-fire" v-reveal="'right'" data-reveal-delay="120">explode</span>
-          <span class="hero__line-3 t-display" v-reveal="'up'" data-reveal-delay="240">na boca</span>
+          <span class="hero__line-1 t-display" v-reveal="'left'">Hambúrguer</span>
+          <span class="hero__line-2 t-serif" v-reveal="'right'" data-reveal-delay="120">
+            <em>feito em casa,</em>
+          </span>
+          <span class="hero__line-3 t-display" v-reveal="'up'" data-reveal-delay="240">
+            com a família junto.
+          </span>
         </h1>
 
         <p class="hero__lead" v-reveal="'up'" data-reveal-delay="320">
-          Hambúrgueres preparados na chapa quente, pão fresco assado todo dia,
-          ingredientes selecionados a dedo. Tudo do jeito que o Gú gosta — <em>do jeito certo</em>.
+          Quem cozinha aqui é o <strong>Gú</strong>, 11 anos. A mãe ajuda, as irmãs fazem
+          a lição em cima da mesa enquanto o pão vai pra chapa. O cardápio é curto,
+          a fila é pequena, o lanche sai quentinho.
         </p>
 
         <div class="hero__actions" v-reveal="'up'" data-reveal-delay="420">
           <a href="#cardapio" class="btn btn-primary pulse-glow">
-            <q-icon name="local_fire_department" size="20px" />
-            Ver cardápio
+            <q-icon name="restaurant_menu" size="20px" />
+            Ver o cardápio
           </a>
-          <a href="#pedir" class="btn btn-ghost">
-            <q-icon name="delivery_dining" size="20px" />
-            Pedir delivery
-          </a>
+          <router-link to="/quem-somos" class="btn btn-ghost">
+            <q-icon name="arrow_forward" size="20px" />
+            Conhecer o Gú
+          </router-link>
         </div>
 
         <div class="hero__stats">
           <div class="hero__stat" v-reveal="'down-left'" data-reveal-delay="500">
-            <span class="hero__stat-num t-display t-grad-gold">5+</span>
-            <span class="hero__stat-lbl">anos no fogo</span>
+            <span class="hero__stat-num t-display t-grad-gold">11</span>
+            <span class="hero__stat-lbl">anos<br/>o chef da casa</span>
           </div>
           <div class="hero__stat" v-reveal="'down'" data-reveal-delay="600">
-            <span class="hero__stat-num t-display t-grad-gold">12k</span>
-            <span class="hero__stat-lbl">pedidos servidos</span>
+            <span class="hero__stat-num t-display t-grad-gold">3</span>
+            <span class="hero__stat-lbl">dias<br/>de cozinha por semana</span>
           </div>
           <div class="hero__stat" v-reveal="'down-right'" data-reveal-delay="700">
-            <span class="hero__stat-num t-display t-grad-gold">4.9</span>
-            <span class="hero__stat-lbl">⭐ avaliação média</span>
+            <span class="hero__stat-num t-display t-grad-gold">1</span>
+            <span class="hero__stat-lbl">família<br/>na cozinha junto</span>
           </div>
         </div>
       </div>
 
-      <!-- right column — logo art -->
       <div class="hero__art">
         <div class="hero__art-orbit sd-rotate" aria-hidden="true">
           <span /><span /><span /><span />
@@ -75,30 +77,30 @@
           <div class="hero__art-card-inner float-y">
             <img src="/logo.png" alt="Logo Lanches do Gú" />
           </div>
-          <div class="hero__art-badge t-mono" v-reveal="'tilt-r'" data-reveal-delay="500">
-            <span>★ ★ ★ ★ ★</span>
-            <small>O lanche oficial</small>
+          <div class="hero__art-badge" v-reveal="'tilt-r'" data-reveal-delay="500">
+            <span class="t-hand">"</span>
+            <p class="t-hand">o lanche é caprichado mesmo</p>
+            <small class="t-mono">— a vó do Gú</small>
           </div>
           <div class="hero__art-tag t-mono" v-reveal="'tilt-l'" data-reveal-delay="650">
-            <span class="dot" /> Aberto agora
+            <span class="dot" /> sex · sáb · dom
           </div>
         </div>
       </div>
     </div>
 
-    <!-- bottom marquee -->
     <div class="hero__marquee" v-reveal="'up'" data-reveal-delay="800">
       <div class="marquee">
         <div class="marquee__track">
           <span v-for="i in 2" :key="i" class="marquee__group t-display">
-            <span>Carvão</span><span class="dot-sep">•</span>
-            <span class="t-brush t-grad-fire">Suculento</span><span class="dot-sep">•</span>
-            <span>Artesanal</span><span class="dot-sep">•</span>
-            <span class="t-brush t-grad-gold">Do Gú</span><span class="dot-sep">•</span>
-            <span>Fresquinho</span><span class="dot-sep">•</span>
-            <span class="t-brush t-grad-fire">Hot</span><span class="dot-sep">•</span>
-            <span>Chapa quente</span><span class="dot-sep">•</span>
-            <span class="t-brush t-grad-gold">Pra acabar</span><span class="dot-sep">•</span>
+            <span>na chapa</span><span class="dot-sep">•</span>
+            <span class="t-brush t-grad-fire">caprichado</span><span class="dot-sep">•</span>
+            <span>pão fresquinho</span><span class="dot-sep">•</span>
+            <span class="t-brush t-grad-gold">do Gú</span><span class="dot-sep">•</span>
+            <span>com molho da mãe</span><span class="dot-sep">•</span>
+            <span class="t-brush t-grad-fire">tem brigadeiro</span><span class="dot-sep">•</span>
+            <span>fim de semana</span><span class="dot-sep">•</span>
+            <span class="t-brush t-grad-gold">aqui de casa</span><span class="dot-sep">•</span>
           </span>
         </div>
       </div>
@@ -125,7 +127,7 @@
   width: 800px; height: 800px;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: .55;
+  opacity: .5;
 }
 .hero__glow--fire {
   background: radial-gradient(circle, #FF4500, transparent 60%);
@@ -134,7 +136,7 @@
 .hero__glow--gold {
   background: radial-gradient(circle, #FFB800, transparent 60%);
   bottom: -300px; left: -200px;
-  opacity: .35;
+  opacity: .3;
 }
 .hero__ring {
   position: absolute;
@@ -152,47 +154,43 @@
 }
 .hero__sparks { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .8; }
 
-/* ---- inner grid ---- */
 .hero__inner {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
   gap: 80px;
   align-items: center;
   position: relative;
   z-index: 2;
 }
 
-/* ---- copy ---- */
 .hero__copy { display: flex; flex-direction: column; gap: 24px; }
 .hero__title {
-  font-size: clamp(56px, 9vw, 132px);
-  line-height: .88;
+  font-size: clamp(52px, 7.5vw, 112px);
+  line-height: .95;
   margin: 6px 0 4px;
   display: flex;
   flex-direction: column;
-  gap: 0;
   font-weight: 400;
 }
 .hero__line-1 { color: var(--c-text); }
 .hero__line-2 {
-  font-size: clamp(72px, 12vw, 180px);
-  line-height: .9;
-  margin: -4px 0;
+  font-size: clamp(64px, 9vw, 132px);
+  line-height: 1;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--c-gold);
   text-transform: none;
+  letter-spacing: -.01em;
+  em { font-style: italic; }
 }
-.hero__line-3 { color: var(--c-text); margin-top: 6px; }
+.hero__line-3 { color: var(--c-text); }
 
 .hero__lead {
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--c-text-dim);
-  max-width: 520px;
-  em {
-    color: var(--c-gold);
-    font-style: italic;
-    font-family: var(--f-brush);
-    font-size: 22px;
-  }
+  max-width: 540px;
+  strong { color: var(--c-gold); font-weight: 600; }
 }
 
 .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -204,12 +202,13 @@
   padding-top: 30px;
   border-top: 1px solid var(--c-border);
 }
-.hero__stat { display: flex; flex-direction: column; gap: 4px; }
-.hero__stat-num { font-size: 44px; line-height: 1; }
+.hero__stat { display: flex; flex-direction: column; gap: 6px; max-width: 140px; }
+.hero__stat-num { font-size: 56px; line-height: 1; }
 .hero__stat-lbl {
   font-family: var(--f-mono);
   font-size: 11px;
-  letter-spacing: .15em;
+  line-height: 1.4;
+  letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--c-text-mute);
 }
@@ -226,8 +225,7 @@
   justify-content: center;
 }
 .hero__art-orbit {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   border-radius: 50%;
   border: 1px dashed rgba(255, 184, 0, .25);
   span {
@@ -251,8 +249,7 @@
 }
 .hero__art-card-inner {
   position: absolute; inset: 0;
-  display: grid;
-  place-items: center;
+  display: grid; place-items: center;
   img {
     width: 100%;
     height: 100%;
@@ -262,21 +259,35 @@
 }
 .hero__art-badge {
   position: absolute;
-  top: 8%;
-  left: -12%;
-  background: var(--c-bg-2);
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-md);
-  padding: 12px 16px;
-  box-shadow: var(--sh-card);
-  span { display: block; color: var(--c-gold); font-size: 14px; letter-spacing: .15em; }
+  top: 4%;
+  left: -16%;
+  background: #FFF6DA;
+  border-radius: 4px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--sh-card), 0 24px 40px -10px rgba(0,0,0,.5);
+  transform: rotate(-6deg);
+  max-width: 200px;
+  color: #1a1208;
+  > span:first-child {
+    position: absolute;
+    top: 4px; left: 10px;
+    font-size: 42px;
+    color: var(--c-fire);
+    line-height: 1;
+  }
+  p {
+    font-size: 22px;
+    line-height: 1.1;
+    margin: 0 0 6px;
+    color: #1a1208;
+    font-weight: 600;
+  }
   small {
     display: block;
-    color: var(--c-text-dim);
     font-size: 10px;
+    letter-spacing: .14em;
+    color: #6c563a;
     text-transform: uppercase;
-    letter-spacing: .18em;
-    margin-top: 4px;
   }
 }
 .hero__art-tag {
@@ -288,15 +299,14 @@
   border-radius: var(--r-pill);
   padding: 10px 16px;
   font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  letter-spacing: .15em;
+  text-transform: lowercase;
   color: var(--c-text);
   display: flex; align-items: center; gap: 8px;
   box-shadow: var(--sh-card);
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: #21BA45; box-shadow: 0 0 8px #21BA45; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-gold); box-shadow: 0 0 8px var(--c-gold); }
 }
 
-/* ---- marquee ---- */
 .hero__marquee {
   margin-top: 80px;
   position: relative; z-index: 2;
@@ -312,23 +322,20 @@
   letter-spacing: .04em;
   color: var(--c-text-dim);
 }
-.dot-sep {
-  color: var(--c-gold);
-  font-size: 28px;
-}
+.dot-sep { color: var(--c-gold); font-size: 28px; }
 
 @media (max-width: 980px) {
   .hero__inner { grid-template-columns: 1fr; gap: 60px; }
   .hero__art { max-width: 380px; margin: 0 auto; }
   .hero__stats { gap: 24px; }
-  .hero__stat-num { font-size: 34px; }
+  .hero__stat-num { font-size: 44px; }
   .marquee__group { font-size: 26px; }
 }
 @media (max-width: 480px) {
   .hero { padding-top: 130px; }
   .hero__stats { flex-wrap: wrap; gap: 18px; }
   .hero__stat { flex: 1 1 80px; }
-  .hero__art-badge { top: 2%; left: -4%; padding: 8px 12px; }
+  .hero__art-badge { top: 2%; left: -4%; padding: 12px 14px 10px; p { font-size: 18px; } }
   .hero__art-tag { right: -4%; bottom: 4%; }
   .marquee__group { font-size: 22px; gap: 36px; }
 }

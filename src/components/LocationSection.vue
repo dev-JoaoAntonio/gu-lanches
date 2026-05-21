@@ -1,75 +1,70 @@
 <template>
   <section id="onde" class="loc section">
     <div class="container loc__inner">
-      <!-- left: info -->
       <div class="loc__copy">
-        <span class="section-label" v-reveal="'right'">Onde estamos</span>
+        <span class="section-label" v-reveal="'right'">Como pedir</span>
         <h2 class="section-title" v-reveal="'right'" data-reveal-delay="100">
-          Vem comer <br/>
-          <span class="t-brush t-grad-fire">aqui pertinho</span>
+          Manda mensagem,<br/>
+          <span class="t-serif"><em>a gente confirma.</em></span>
         </h2>
         <p class="section-lead" v-reveal="'right'" data-reveal-delay="200">
-          Cozinha aberta de quarta a domingo, das 18h à meia-noite. Salão pra comer no local
-          ou pedir e levar.
+          O Gú cozinha de sexta a domingo. Pedidos pelo WhatsApp ou DM no Instagram. Depois
+          é só vir buscar, ou combinar entrega aqui no bairro.
         </p>
 
         <div class="loc__cards">
           <div class="loc__card" v-reveal="'down-left'" data-reveal-delay="280">
-            <q-icon name="location_on" size="28px" />
+            <q-icon name="schedule" size="26px" />
             <div>
-              <strong>Endereço</strong>
-              <p>Rua das Brasas, 222 — Centro</p>
-              <p>Goiânia · GO</p>
+              <strong>Horário</strong>
+              <p>Sex e Sáb · 19h às 23h</p>
+              <p>Dom · 12h às 15h</p>
             </div>
           </div>
           <div class="loc__card" v-reveal="'down'" data-reveal-delay="360">
-            <q-icon name="schedule" size="28px" />
+            <q-icon name="location_on" size="26px" />
             <div>
-              <strong>Horário</strong>
-              <p>Qua a Dom · 18h às 00h</p>
-              <p>Seg e Ter · fechado</p>
+              <strong>Onde</strong>
+              <p>Vila Brasília, Aparecida de Goiânia</p>
+              <p>(endereço exato após confirmar o pedido)</p>
             </div>
           </div>
           <div class="loc__card" v-reveal="'down-right'" data-reveal-delay="440">
-            <q-icon name="call" size="28px" />
+            <q-icon name="payments" size="26px" />
             <div>
-              <strong>Contato</strong>
-              <p>(62) 9 9999-0000</p>
-              <p>@lanchesdogu</p>
+              <strong>Como pagar</strong>
+              <p>Pix, dinheiro ou cartão</p>
+              <p>na hora de retirar</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- right: CTA card -->
       <div class="loc__cta" id="pedir" v-reveal="'zoom'" data-reveal-delay="200">
         <div class="loc__cta-glow sd-rotate" aria-hidden="true" />
         <div class="loc__cta-inner">
-          <span class="t-up loc__cta-up">Faminto?</span>
+          <span class="loc__cta-up t-mono">É só chamar</span>
           <h3 class="t-display loc__cta-title">
-            Pede agora.<br/>
-            <span class="t-brush t-grad-gold">A gente entrega.</span>
+            Pede pelo<br/>
+            <span class="t-serif"><em>WhatsApp.</em></span>
           </h3>
           <p class="loc__cta-text">
-            Delivery próprio em até 40 min na região central.
-            Também atendemos pelos principais apps.
+            O Gú (ou a Bia, se ele estiver no fogão) responde rápido. Sextas costumam encher,
+            então quanto antes melhor.
           </p>
           <div class="loc__cta-actions">
-            <a href="#" class="btn btn-primary">
-              <q-icon name="delivery_dining" size="20px" />
-              Pedir delivery
-            </a>
-            <a href="#" class="btn btn-ghost">
+            <a href="https://wa.me/5562999990000" class="btn btn-primary">
               <q-icon name="chat" size="20px" />
-              WhatsApp
+              Abrir o WhatsApp
+            </a>
+            <a href="https://instagram.com/lanchesdogu" class="btn btn-ghost">
+              <q-icon name="o_camera_alt" size="20px" />
+              @lanchesdogu
             </a>
           </div>
-          <div class="loc__cta-apps">
-            <span class="t-mono">Disponível em:</span>
-            <span class="loc__app">iFood</span>
-            <span class="loc__app">Rappi</span>
-            <span class="loc__app">Uber Eats</span>
-          </div>
+          <p class="loc__cta-note t-hand">
+            *encomenda de mais de 5 lanches só pra noite seguinte, viu?
+          </p>
         </div>
       </div>
     </div>
@@ -86,11 +81,18 @@
   gap: 60px;
   align-items: center;
 }
+.section-title .t-serif {
+  font-style: italic;
+  color: var(--c-gold);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -.01em;
+}
 
 .loc__cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 12px;
   margin-top: 36px;
   max-width: 480px;
 }
@@ -105,7 +107,7 @@
   padding: 18px 20px;
   transition: transform .3s, border-color .3s;
   &:hover { transform: translateX(6px); border-color: var(--c-border); }
-  .q-icon { color: var(--c-gold); margin-top: 4px; }
+  .q-icon { color: var(--c-gold); margin-top: 2px; }
   strong {
     display: block;
     font-family: var(--f-mono);
@@ -115,10 +117,10 @@
     color: var(--c-text-mute);
     margin-bottom: 6px;
   }
-  p { font-size: 15px; color: var(--c-text); margin: 0 0 2px; }
+  p { font-size: 14px; color: var(--c-text); margin: 0 0 2px; line-height: 1.45; }
 }
 
-/* ---- CTA card ---- */
+/* ---- CTA ---- */
 .loc__cta {
   position: relative;
   border-radius: var(--r-lg);
@@ -142,12 +144,15 @@
   color: var(--c-gold);
   display: inline-block;
   margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: 12px;
 }
 .loc__cta-title {
   font-size: clamp(40px, 5vw, 60px);
   line-height: .95;
   margin: 0 0 16px;
-  .t-brush { font-size: 1.05em; vertical-align: -.05em; }
+  .t-serif { font-style: italic; color: var(--c-gold); font-weight: 700; text-transform: none; letter-spacing: -.01em; }
 }
 .loc__cta-text {
   font-size: 16px;
@@ -158,28 +163,14 @@
 }
 .loc__cta-actions {
   display: flex; gap: 12px; flex-wrap: wrap;
-  margin-bottom: 26px;
+  margin-bottom: 22px;
 }
-.loc__cta-apps {
-  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
-  padding-top: 22px;
+.loc__cta-note {
+  font-size: 18px;
+  color: var(--c-text-mute);
+  margin: 0;
+  padding-top: 18px;
   border-top: 1px dashed rgba(255,255,255,.08);
-  > span:first-child {
-    font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--c-text-mute);
-  }
-}
-.loc__app {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  letter-spacing: .04em;
-  padding: 6px 12px;
-  border-radius: var(--r-pill);
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
-  color: var(--c-text);
 }
 
 @media (max-width: 980px) {

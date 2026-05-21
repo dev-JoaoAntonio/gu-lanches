@@ -1,19 +1,19 @@
 <template>
   <section id="depoimentos" class="rev section">
-    <!-- scroll driven backdrop word -->
     <div class="rev__backword sd-parallax-fast t-display" aria-hidden="true">
-      QUEM PROVOU NUNCA ESQUECE
+      DA VIZINHANÇA PRA VIZINHANÇA
     </div>
 
     <div class="container">
       <div class="rev__head">
-        <span class="section-label" v-reveal="'down'">Depoimentos</span>
+        <span class="section-label" v-reveal="'down'">Recados</span>
         <h2 class="section-title" v-reveal="'up'" data-reveal-delay="100">
-          Quem provou,<br/>
-          <span class="t-brush t-grad-fire">não esquece</span>
+          O que dizem<br/>
+          <span class="t-serif"><em>os clientes do Gú</em></span>
         </h2>
         <p class="section-lead" v-reveal="'up'" data-reveal-delay="200">
-          Mais de 12 mil pedidos e contando. Um pouquinho do que rola na nossa caixa de avaliações.
+          A maior parte chega no boca-a-boca. Volta porque o lanche é bom e porque é divertido
+          ver o garoto trabalhando com a família.
         </p>
       </div>
 
@@ -25,15 +25,13 @@
           v-reveal="reveals[idx]"
           :data-reveal-delay="idx * 100"
         >
-          <div class="rev__quote">"</div>
-          <p class="rev__text">{{ t.text }}</p>
+          <p class="rev__text t-serif">{{ t.text }}</p>
           <div class="rev__foot">
             <div class="rev__avatar" :style="{ background: t.color }">{{ t.initial }}</div>
             <div>
-              <strong class="t-mono">{{ t.name }}</strong>
+              <strong>{{ t.name }}</strong>
               <small>{{ t.role }}</small>
             </div>
-            <div class="rev__stars">★ ★ ★ ★ ★</div>
           </div>
         </article>
       </div>
@@ -44,46 +42,46 @@
 <script setup>
 const items = [
   {
-    name: 'Marina A.',
+    name: 'Marina, vizinha',
     initial: 'M',
-    role: 'Cliente fiel desde 2020',
+    role: 'mora na mesma rua',
     color: 'linear-gradient(135deg,#FFB800,#FF6B1A)',
-    text: 'O Cheddar Melt é viciante. Já provei muito hambúrguer e o do Gú tem aquela coisa de comida feita com capricho. Pão fofo, carne suculenta, parou.'
+    text: 'A gente passou a pedir toda sexta. O Gú já sabe o que cada um da família come. Achou que o meu marido não ia gostar de pepino e já tirou antes de eu pedir.'
   },
   {
-    name: 'Rafa P.',
+    name: 'Rafa',
     initial: 'R',
-    role: 'Vai todo sábado',
+    role: 'professor do Gú',
     color: 'linear-gradient(135deg,#E63946,#FF6B1A)',
-    text: 'Sábado sem Bacon de Fogo não é sábado. O atendimento é sempre na maior simpatia, o pessoal lembra do meu nome.'
+    text: 'Ele me chamou pra ir num sábado. Cheguei achando que era uma brincadeira de criança. Saí com o melhor cheddar derretido que comi esse ano.'
   },
   {
-    name: 'Camila R.',
+    name: 'Camila',
     initial: 'C',
-    role: 'Veggie',
+    role: 'amiga da mãe',
     color: 'linear-gradient(135deg,#FFD24C,#FFB800)',
-    text: 'Finalmente uma hamburgueria que respeita opção vegetariana. O Green Stack é uma das melhores coisas que provei esse ano.'
+    text: 'Encomendei dez Tudão pro aniversário da minha filha. Saiu tudo no horário, embalado direitinho. O Gú escreveu o nome de cada convidado na embalagem.'
   },
   {
-    name: 'João V.',
-    initial: 'J',
-    role: 'Pediu de delivery',
-    color: 'linear-gradient(135deg,#FF4500,#E63946)',
-    text: 'Pedi pelo iFood numa noite de chuva. Chegou quentinho, embalado direitinho, o pão ainda crocante. Aplausos.'
-  },
-  {
-    name: 'Bia M.',
-    initial: 'B',
-    role: 'Fã do Duplo Impacto',
-    color: 'linear-gradient(135deg,#FFB800,#FFD24C)',
-    text: 'Duplo Impacto é uma experiência. Levo amigos só pra ver a cara deles na primeira mordida. Recomendo demais.'
-  },
-  {
-    name: 'Tiago S.',
+    name: 'Seu Toninho',
     initial: 'T',
-    role: 'Aniversariante',
+    role: 'do mercado da esquina',
+    color: 'linear-gradient(135deg,#FF4500,#E63946)',
+    text: 'O moleque vem aqui no mercado escolher tomate como se fosse coisa séria. Aperta, cheira, devolve se não está bom. Isso é coisa de cozinheiro.'
+  },
+  {
+    name: 'Bia',
+    initial: 'B',
+    role: 'irmã do Gú',
+    color: 'linear-gradient(135deg,#FFB800,#FFD24C)',
+    text: 'Ele me ajuda com a tarefa de matemática quase todo dia. Em troca eu fico anotando os pedidos no caderno. Acho que é justo.'
+  },
+  {
+    name: 'João',
+    initial: 'J',
+    role: 'pediu pela primeira vez',
     color: 'linear-gradient(135deg,#FF6B1A,#FFB800)',
-    text: 'Fiz meu aniversário ali. O Gú e o time fecharam o salão pra gente, super atenciosos. Lanche maravilhoso, brigadeiro de sobremesa. Top.'
+    text: 'Achei pelo Instagram, pedi sem muita esperança. Veio numa caixinha de papel, com o nome do lanche escrito à mão. Pão tostado na medida certa.'
   }
 ]
 const reveals = ['up-left', 'up', 'up-right', 'down-left', 'zoom', 'down-right']
@@ -93,9 +91,9 @@ const reveals = ['up-left', 'up', 'up-right', 'down-left', 'zoom', 'down-right']
 .rev { position: relative; overflow: hidden; background: var(--c-bg-2); }
 .rev__backword {
   position: absolute;
-  top: 20%;
+  top: 18%;
   left: -10%;
-  font-size: clamp(140px, 18vw, 280px);
+  font-size: clamp(120px, 16vw, 240px);
   white-space: nowrap;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 184, 0, .08);
@@ -110,6 +108,14 @@ const reveals = ['up-left', 'up', 'up-right', 'down-left', 'zoom', 'down-right']
   position: relative; z-index: 1;
 }
 .rev__head .section-lead { margin: 0 auto; }
+.section-title .t-serif {
+  font-style: italic;
+  color: var(--c-gold);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -.01em;
+}
+
 .rev__grid {
   position: relative; z-index: 1;
   display: grid;
@@ -121,63 +127,62 @@ const reveals = ['up-left', 'up', 'up-right', 'down-left', 'zoom', 'down-right']
   background: var(--c-bg-3);
   border: 1px solid rgba(255,255,255,.05);
   border-radius: var(--r-lg);
-  padding: 28px;
+  padding: 32px 28px 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 22px;
   transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s;
+  &::before {
+    content: "“";
+    position: absolute;
+    top: -6px; left: 18px;
+    font-family: var(--f-serif);
+    font-size: 100px;
+    color: var(--c-gold);
+    line-height: 1;
+    opacity: .25;
+  }
   &:hover {
-    transform: translateY(-4px) rotate(-.4deg);
+    transform: translateY(-4px) rotate(-.3deg);
     border-color: var(--c-border);
   }
 }
-.rev__quote {
-  font-family: var(--f-display);
-  font-size: 80px;
-  color: var(--c-gold);
-  line-height: .6;
-  margin-top: -8px;
-  letter-spacing: -.05em;
-}
 .rev__text {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.55;
   color: var(--c-text);
   margin: 0;
   flex: 1;
+  font-style: italic;
+  font-weight: 400;
 }
 .rev__foot {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 12px;
   align-items: center;
   padding-top: 16px;
   border-top: 1px solid rgba(255,255,255,.05);
 }
 .rev__avatar {
-  width: 42px; height: 42px;
+  width: 40px; height: 40px;
   border-radius: 50%;
   display: grid; place-items: center;
   font-family: var(--f-display);
-  font-size: 18px;
+  font-size: 16px;
   color: #1b0900;
 }
 .rev__foot strong {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--c-text);
-  letter-spacing: .04em;
+  font-weight: 600;
 }
 .rev__foot small {
   display: block;
-  font-size: 11px;
-  color: var(--c-text-mute);
-  letter-spacing: .04em;
-}
-.rev__stars {
-  color: var(--c-gold);
   font-size: 12px;
-  letter-spacing: .1em;
+  color: var(--c-text-mute);
+  margin-top: 2px;
 }
 
 @media (max-width: 980px) { .rev__grid { grid-template-columns: repeat(2, 1fr); } }

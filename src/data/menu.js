@@ -1,70 +1,58 @@
-// Cardápio em destaque — itens fictícios para a vitrine
+// Cardápio — cozinha caseira, lista enxuta, preço de bairro
 export const burgers = [
   {
-    id: 'gu-classic',
-    tag: 'Mais pedido',
-    name: 'Gú Classic',
-    subtitle: 'O clássico que começou tudo.',
-    description: 'Blend de 180g, cheddar maturado, alface americana, tomate, picles e o nosso molho especial.',
-    price: 28.90,
-    emoji: '🍔',
-    spicy: 0
+    id: 'simples',
+    name: 'Simples',
+    subtitle: 'o de toda quinta',
+    description: 'Pão, blend de 130g, queijo prato, alface, tomate e maionese da casa.',
+    price: 18.00,
+    emoji: '🍔'
   },
   {
-    id: 'bacon-de-fogo',
-    tag: 'Assinatura',
-    name: 'Bacon de Fogo',
-    subtitle: 'Defumado no carvão.',
-    description: 'Dois discos de 120g, bacon flambado, cheddar duplo, cebola caramelizada e molho barbecue artesanal.',
-    price: 34.90,
-    emoji: '🔥',
-    spicy: 2
+    id: 'cheddar-do-gu',
+    name: 'Cheddar do Gú',
+    subtitle: 'o da foto do Insta',
+    description: 'Blend de 150g, cheddar derretido em duas camadas, cebola na manteiga e o molho que a mãe ensinou.',
+    price: 24.00,
+    emoji: '🧀'
   },
   {
-    id: 'cheddar-melt',
-    tag: 'Cremoso',
-    name: 'Cheddar Melt',
-    subtitle: 'Cheddar derretido na chapa.',
-    description: 'Carne de 180g, cheddar quente em duas camadas, cebola crispy e maionese da casa.',
-    price: 32.90,
-    emoji: '🧀',
-    spicy: 0
+    id: 'caprichado',
+    name: 'Caprichado',
+    subtitle: 'pra quem chegou com fome',
+    description: 'Blend de 180g, queijo, bacon caseiro, ovo na chapa, alface, tomate e maionese.',
+    price: 28.00,
+    emoji: '🥓'
   },
   {
-    id: 'pimenta-do-gu',
-    tag: 'Picante',
-    name: 'Pimenta do Gú',
-    subtitle: 'Pra quem gosta de fogo.',
-    description: 'Blend 180g, jalapeño grelhado, pepper jack, molho chipotle e crocante de cebola.',
-    price: 33.90,
-    emoji: '🌶️',
-    spicy: 3
+    id: 'frango-crocante',
+    name: 'Frango Crocante',
+    subtitle: 'quando bate a vontade',
+    description: 'Filé de frango empanado na hora, queijo, alface, tomate e molho da casa no pão tostado.',
+    price: 22.00,
+    emoji: '🍗'
   },
   {
-    id: 'green-stack',
-    tag: 'Veggie',
-    name: 'Green Stack',
-    subtitle: 'Vegetariano de verdade.',
-    description: 'Hambúrguer de grão-de-bico e beterraba, queijo coalho, rúcula, tomate seco e molho de iogurte.',
-    price: 29.90,
-    emoji: '🥬',
-    spicy: 0
+    id: 'tudao',
+    name: 'Tudão',
+    subtitle: 'só sábado',
+    description: 'Dois blends de 130g, queijo, bacon, presunto, ovo, alface, tomate, milho e maionese. É grande.',
+    price: 32.00,
+    emoji: '💛'
   },
   {
-    id: 'duplo-impacto',
-    tag: 'Tamanho família',
-    name: 'Duplo Impacto',
-    subtitle: 'Pra dividir? Talvez.',
-    description: 'Dois blends de 160g, queijo prato, bacon, ovo, alface, tomate e maionese da casa.',
-    price: 39.90,
-    emoji: '💥',
-    spicy: 1
+    id: 'mini',
+    name: 'Mini do Gú',
+    subtitle: 'pra dividir ou matar a fome rapidão',
+    description: 'Pãozinho menor, blend de 90g, queijo, alface e maionese. Tem gente que pede dois.',
+    price: 14.00,
+    emoji: '🌟'
   }
 ]
 
 export const sides = [
-  { name: 'Batata Rústica', desc: 'Crocante por fora, macia por dentro', price: 18.00, icon: 'restaurant' },
-  { name: 'Onion Rings', desc: 'Anéis dourados ao molho da casa', price: 19.00, icon: 'donut_large' },
-  { name: 'Nuggets Caseiros', desc: '8 unidades + molho à escolha', price: 22.00, icon: 'lunch_dining' },
-  { name: 'Refri Lata', desc: 'Coca, Guaraná, Sprite ou Fanta', price: 7.00, icon: 'local_drink' }
+  { name: 'Batata frita', desc: 'porção do dia, na hora', price: 14.00, icon: 'restaurant' },
+  { name: 'Refri lata', desc: 'tem coca, guaraná e Sukita', price: 6.00, icon: 'local_drink' },
+  { name: 'Suco natural', desc: 'laranja ou maracujá, copo grande', price: 8.00, icon: 'local_bar' },
+  { name: 'Brigadeiro', desc: 'da mãe, embalado no papel', price: 4.00, icon: 'cookie' }
 ]
